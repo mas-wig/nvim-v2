@@ -61,19 +61,20 @@ M.setup = function()
 		sections = process_sections({
 			lualine_a = { "mode" },
 			lualine_b = {
-				"branch",
+                {"branch", color ={bg="#2a8000"}},
 				{
 					"diff",
+					colored = true, --
 					diff_color = {
 						added = { fg = "#1aff1a" },
-						modified = { fg = "#e6e600" },
 						removed = { fg = "#ff4d4d" },
+						modified = { fg = "#e6e600" },
 					},
-					symbols = { added = "🟢 ", modified = " 🟡 ", removed = " 🔴 " },
+					symbols = { added = " ", modified = "  ", removed = "  " },
+                    color = {bg = "#660044"}
 				},
 			},
 			lualine_c = {
-				{ "filename" },
 				{ "filetype" },
 			},
 			lualine_x = {

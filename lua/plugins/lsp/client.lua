@@ -15,8 +15,7 @@ local dirname = function(pathname)
 end
 
 M.client = {
-	sumneko_lua = {
-		capabilities = M.capabilities,
+	lua_ls = {
 		settings = {
 			Lua = {
 				diagnostics = {
@@ -121,10 +120,6 @@ M.client = {
 	},
 
 	rust_analyzer = {
-		root_dir = function(fname)
-			return require("lspconfig").util.root_pattern("Cargo.toml", "rust-project.json", ".git")(fname)
-				or dirname(fname)
-		end,
 		filetypes = { "rust" },
 		message_level = vim.lsp.protocol.MessageType.error,
 		settings = {
@@ -134,6 +129,26 @@ M.client = {
 			},
 		},
 		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+		root_dir = function(fname)
+			return require("lspconfig").util.root_pattern("Cargo.toml", "rust-project.json", ".git")(fname)
+				or dirname(fname)
+		end,
+	},
+
+	solidity = {
+		cmd = { "solidity-ls", "--stdio" },
+		filetypes = { "solidity" },
+		-- settings = {
+		-- 	{
+		-- 		solidity = {
+		-- 			includePath = "$HOME/.config/smcrt", -- Path external libs
+		-- 			remapping = { ["@OpenZeppelin/"] = "OpenZeppelin/openzeppelin-contracts@5.6.0/" },
+		-- 		},
+		-- 	},
+		-- },
+		root_dir = function(fname)
+			return require("lspconfig").util.root_pattern(".git")(fname) or dirname(fname)
+		end,
 	},
 }
 

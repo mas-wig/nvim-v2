@@ -32,7 +32,6 @@ M.setup = function()
         shade_filetypes = {},
         autochdir = true,
         highlights = {
-
             Normal = {
                 guibg = "none",
             },
@@ -54,8 +53,8 @@ M.setup = function()
         shell = vim.o.shell,
         float_opts = {
             border = "rounded",
-            width = 150,
-            height = 33,
+            width = 140,
+            height = 28,
             winblend = 3,
         },
         winbar = {

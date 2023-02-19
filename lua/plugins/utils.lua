@@ -5,6 +5,8 @@ return {
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{
 		"dstein64/vim-startuptime",
+        lazy = true,
+        event = "VeryLazy",
 		cmd = "StartupTime",
 		config = function()
 			vim.g.startuptime_tries = 10

@@ -48,7 +48,7 @@ return {
 	{
 		"jackMort/ChatGPT.nvim",
 		lazy = true,
-		cmd = { "ChatGPT", "ChatGPTActAs" },
+		cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions" },
 		config = function()
 			require("plugins.coding.chatgpt")
 		end,

@@ -16,6 +16,9 @@ end
 
 M.client = {
 	lua_ls = {
+		cmd = { "lua-language-server" },
+		filetypes = { "lua" },
+		single_file_support = true,
 		settings = {
 			Lua = {
 				diagnostics = {
@@ -32,8 +35,9 @@ M.client = {
 			},
 		},
 	},
+
 	gopls = {
-		filetypes = { "go", "gomod", "gohtmltmpl", "gotexttmpl" },
+		filetypes = { "go", "go.mod", "gohtmltmpl", "gotexttmpl" },
 		message_level = vim.lsp.protocol.MessageType.Error,
 		cmd = {
 			"gopls",

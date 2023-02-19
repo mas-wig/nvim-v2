@@ -7,7 +7,7 @@ M.opts = {
 		-- virtual_text = {spacing = 4, prefix = "●"},
 		severity_sort = true,
 	},
-	servers = require("plugins.lsp.client").client,
+	servers = require("plugins.lsp.lspclient").client,
 	setup = {},
 }
 
@@ -63,7 +63,6 @@ M.setup = function(_, opts)
 	end
 
 	require("mason-lspconfig").setup({ ensure_installed = ensure_installed, automatic_installation = true })
-
 	require("mason-lspconfig").setup_handlers({ setup })
 end
 

@@ -23,7 +23,6 @@ return {
 			require("plugins.coding.cmp").cmpconfig()
 		end,
 	},
-
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
@@ -32,7 +31,6 @@ return {
 			require("plugins.coding.cmp").luasnip()
 		end,
 	},
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
@@ -84,11 +82,11 @@ return {
 	},
 
 	{
-		"ldelossa/gh.nvim",
+		"pwntester/octo.nvim",
 		lazy = true,
-		dependencies = { "ldelossa/litee.nvim", lazy = true },
+		cmd = { "Octo" },
 		config = function()
-			require("plugins.coding.gh").setup()
+			require("plugins.coding.octo")
 		end,
 	},
 

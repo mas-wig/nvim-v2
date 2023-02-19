@@ -38,6 +38,10 @@ local hl = {
 	{ 0, "IndentBlanklineContextStart", { fg = "#e6e600", sp = "#e6e600", underline = false } },
 	{ 0, "IndentBlanklineChar", { fg = "none", nocombine = true } },
 	{ 0, "IndentBlanklineContextChar", { fg = "none", nocombine = true } },
+
+	-- Octo
+	{ 0, "OctoIssueTitle", { bg = "#82AAFF" } },
+	{ 0, "OctoIssueId", { bg = "#222436" } },
 }
 
 for _, key in pairs(hl) do

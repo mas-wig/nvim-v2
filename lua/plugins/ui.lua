@@ -106,6 +106,7 @@ return {
 					"TelescopePromt",
 					"chatgpt",
 					"Telescope",
+					"octo",
 				},
 				show_trailing_blankline_indent = false,
 				show_current_context = false,
@@ -132,6 +133,7 @@ return {
 					"NvimTree",
 					"Trouble",
 					"lazy",
+					"octo",
 					"mason",
 					"dbui",
 					"TelescopePromt",
@@ -143,6 +145,22 @@ return {
 				end,
 			})
 			require("mini.indentscope").setup(opts)
+		end,
+	},
+
+	{
+		"NvChad/nvim-colorizer.lua",
+		lazy = "true",
+		ft = { "css", "html", "lua", "javascriptreact", "javascript", "typescript", "typescriptreact" },
+		config = function()
+			require("colorizer").setup({
+				filetypes = { "css", "html", "lua", "javascriptreact", "javascript", "typescript", "typescriptreact" },
+				user_default_options = {
+					names = false,
+					rgb_fn = true,
+					tailwind = true,
+				},
+			})
 		end,
 	},
 
@@ -161,8 +179,12 @@ return {
 					if rawget(vim, "lsp") then
 						for _, client in ipairs(vim.lsp.get_active_clients()) do
 							if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-								return #client_messages > 0 and (" " .. table.concat(client_messages, " "))
-									or client.name .. " 🪷"
+								if client.name == "phpactor" then
+									return client.name .. " 🪷"
+								else
+									return #client_messages > 0 and (" " .. table.concat(client_messages, " "))
+										or client.name .. " 🪷"
+								end
 							end
 						end
 					end

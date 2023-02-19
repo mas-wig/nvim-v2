@@ -7,6 +7,7 @@ end
 local options = {
 	ensure_installed = {
 		"bash",
+        "help",
 		"cpp",
 		"c",
 		"c_sharp",

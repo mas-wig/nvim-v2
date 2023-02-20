@@ -1,39 +1,48 @@
 return {
-	{
-		"neovim/nvim-lspconfig",
-		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("plugins.lsp.lspconfig").setup()
-		end,
-		dependencies = {
-			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true, lazy = true },
-			{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } }, lazy = true },
-			{ "williamboman/mason-lspconfig.nvim", lazy = true },
-			{
-				"williamboman/mason.nvim",
-				cmd = { "Mason", "MasonInstallAll" },
-				lazy = true,
-				config = function()
-					require("plugins.lsp.mason")
-				end,
-			},
-			{
-				"hrsh7th/cmp-nvim-lsp",
-				lazy = true,
-				cond = function()
-					return require("setup.utils").has("nvim-cmp")
-				end,
-			},
-			{
-				"glepnir/lspsaga.nvim",
-				cmd = "Lspsaga",
-				lazy = true,
-				keys = require("plugins.lsp.lspsaga").keymaps,
-				config = function()
-					require("plugins.lsp.lspsaga").setup()
-				end,
-			},
-		},
-	},
+    {
+        "ray-x/navigator.lua",
+        lazy = true,
+        event = {"BufReadPre", "BufNewFile"},
+        branch = "master",
+        keys = require("plugins.lsp.keymaps"),
+        config = function()
+            require("plugins.lsp.navigator")
+        end,
+        dependencies = {
+            {
+                "ray-x/guihua.lua",
+                build = "cd lua/fzy && make",
+                lazy = true,
+                branch = "master",
+            },
+            {
+                "neovim/nvim-lspconfig",
+                lazy = true,
+                event = {"BufReadPre", "BufNewFile"},
+                dependencies = {
+                    {
+                        "hrsh7th/cmp-nvim-lsp",
+                        lazy = true,
+                        cond = function()
+                            return require("setup.utils").has("nvim-cmp")
+                        end,
+                    },
+                },
+            },
+            {
+                "williamboman/mason.nvim",
+                cmd = {
+                    "Mason",
+                    "MasonInstallAll",
+                    "MasonInstall",
+                    "MasonUninstallAll",
+                    "MasonInstall",
+                },
+                lazy = true,
+                config = function()
+                    require("plugins.lsp.mason")
+                end,
+            },
+        },
+    },
 }

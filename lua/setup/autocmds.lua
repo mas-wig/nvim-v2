@@ -88,17 +88,11 @@ autocmd("BufWritePost", {
 })
 
 -- Remember folding
-autocmd("BufWinLeave", {
-	pattern = "*.*",
-	group = augroup("remember_folds"),
-	command = "mkview",
-})
-
-autocmd("BufWinLeave", {
-	pattern = "*.*",
-	group = augroup("remember_folds"),
-	command = "silent! loadview",
-})
+vim.cmd([[augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent! loadview
+augroup END]])
 
 autocmd("User", {
 	pattern = "LspProgressStatusUpdated",

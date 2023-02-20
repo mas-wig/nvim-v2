@@ -42,7 +42,6 @@ return {
 			require("plugins.coding.treesitter")
 		end,
 	},
-
 	{
 		"jackMort/ChatGPT.nvim",
 		lazy = true,

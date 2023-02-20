@@ -6,7 +6,9 @@ end
 
 local options = {
     ensure_installed = {
-        "lua_ls"
+        "lua-language-server",
+        "phpactor",
+        "gopls"
     },
     ui = {
         icons = {

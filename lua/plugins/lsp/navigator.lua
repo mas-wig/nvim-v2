@@ -25,9 +25,9 @@ return navigator.setup({
 	lsp_signature_help = false,
 	signature_help_cfg = nil,
 	icons = {
-		code_action_icon = "🏏",
+		code_action_icon = "💡",
 		diagnostic_head = "🐛",
-		diagnostic_head_severity_1 = "🈲",
+		diagnostic_head_severity_1 = "‼️",
 	},
 	mason = true,
 	lsp = {

@@ -50,13 +50,13 @@ M.cmpconfig = function()
 		},
 		window = {
 			completion = {
-				border = "single",
+				border = "none",
 				winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
 				side_padding = 1,
 				scrollbar = false,
 			},
 			documentation = {
-				border = "single",
+				border = "none",
 			},
 		},
 		snippet = {

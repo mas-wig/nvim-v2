@@ -1,1 +1,1 @@
-require("setup").setup()
+require("setup").run()

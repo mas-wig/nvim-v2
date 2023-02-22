@@ -157,7 +157,7 @@ return{
         desc = "show_buf_diagnostics",
     },
     {
-        "<Leader>dt",
+        "<Leader>dT",
         function()
             require("navigator.diagnostics").toggle_diagnostics()
         end,

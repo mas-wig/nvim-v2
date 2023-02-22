@@ -98,19 +98,6 @@ return {
 		config = function()
 			require("indent_blankline").setup({
 				char = "│",
-				filetype_exclude = {
-					"help",
-					"alpha",
-					"dashboard",
-					"NvimTree",
-					"Trouble",
-					"lazy",
-					"dbui",
-					"TelescopePromt",
-					"chatgpt",
-					"Telescope",
-					"octo",
-				},
 				show_trailing_blankline_indent = false,
 				space_char_blankline = " ",
 				show_current_context = false,
@@ -129,25 +116,6 @@ return {
 			options = { try_as_border = true },
 		},
 		config = function(_, opts)
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = {
-					"help",
-					"alpha",
-					"dashboard",
-					"NvimTree",
-					"Trouble",
-					"lazy",
-					"octo",
-					"mason",
-					"dbui",
-					"TelescopePromt",
-					"chatgpt",
-					"Telescope",
-				},
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
 			require("mini.indentscope").setup(opts)
 		end,
 	},

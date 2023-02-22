@@ -88,7 +88,7 @@ M.add_plugins = function()
 	require("lazy").setup(options)
 end
 
-M.setup = function()
+M.run = function()
 	require("setup.options")
 	M.add_plugins()
 	require("setup.mappings")

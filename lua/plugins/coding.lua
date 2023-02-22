@@ -23,6 +23,27 @@ return {
 			require("plugins.coding.cmp").cmpconfig()
 		end,
 	},
+
+	{
+		"CRAG666/code_runner.nvim",
+		lazy = true,
+		keys = { { "<leader>rc", "<cmd>RunCode<cr>", desc = "Run Code" } },
+		cmd = { "RunCode", "RunFile", "RunProject", "RunClose", "CRFiletype", "CRProjects" },
+		config = function()
+			require("code_runner").setup({
+				mode = "term",
+				focus = false,
+				startinsert = true,
+				term = {
+					position = "vert",
+					size = 60,
+				},
+				filetype_path = vim.fn.expand("~/.config/nvim/code_runner.json"),
+				-- project_path = vim.fn.expand("~/.config/nvim/project_manager.json"),
+			})
+		end,
+	},
+
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },

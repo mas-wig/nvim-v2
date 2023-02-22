@@ -12,8 +12,6 @@ opt.concealcursor = "n" -- Hide * markup for bold and italic
 opt.confirm = true -- confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
--- opt.foldexpr = "nvim_treesitter#foldexpr()" -- TreeSitter folding
--- opt.foldlevel = 6
 opt.grepprg = "rg --vimgrep"
 opt.grepformat = "%f:%l:%c:%m"
 opt.hidden = true -- Enable modified buffers in background
@@ -53,12 +51,7 @@ g.db_ui_use_nerd_fonts = 1
 g.navic_silence = true
 g.db_ui_save_location = "~/.config/nvim/db"
 
--- g.rustc_path = "/usr/bin/rustc"
-
-vim.o.foldcolumn = '0' -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
--- opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- opt.statuscolumn =
--- 	'%=%l%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▼" : "⏵") : " " }'
+opt.foldcolumn = "0" -- '0' is not bad
+opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevelstart = 99
+opt.foldenable = true

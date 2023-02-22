@@ -1,7 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 local function l_augroup(name)
-	return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+	return vim.api.nvim_create_augroup("vim_" .. name, { clear = true })
 end
 
 local function augroup(name)
@@ -94,8 +94,48 @@ vim.cmd([[augroup remember_folds
   autocmd BufWinEnter *.* silent! loadview
 augroup END]])
 
+-- refresh lsp-progress
 autocmd("User", {
 	pattern = "LspProgressStatusUpdated",
 	command = "lua require('lualine').refresh()",
 	group = augroup("lualine_augroup"),
+})
+
+local exclude_ft = {
+	"lazy",
+	"NvimTree",
+	"toggleterm",
+	"alpha",
+	"crunner_main",
+	"terminal",
+	"help",
+	"dashboard",
+	"Trouble",
+	"octo",
+	"mason",
+	"dbui",
+	"TelescopePromt",
+	"chatgpt",
+	"Telescope",
+}
+
+autocmd("FileType", {
+	pattern = exclude_ft,
+	callback = function()
+		if vim.bo.ft == exclude_ft then
+			vim.opt.laststatus = 0
+			require("indent_blankline").setup({
+				filetype_exclude = exclude_ft,
+			})
+		end
+		vim.b.miniindentscope_disable = true
+	end,
+})
+
+-- uncomment new lines
+autocmd("BufEnter", {
+	pattern = "*",
+	callback = function()
+		vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
+	end,
 })

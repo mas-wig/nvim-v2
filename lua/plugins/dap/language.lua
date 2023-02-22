@@ -37,7 +37,7 @@ return {
 				-- Wait for delve to start
 				vim.defer_fn(function()
 					callback({ type = "server", host = "127.0.0.1", port = port })
-				end, 1000)
+				end, 3000)
 			end,
 
 			configurations = {

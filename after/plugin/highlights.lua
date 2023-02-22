@@ -29,8 +29,6 @@ local hl = {
 	{ 0, "WhichKey", { fg = c.cyan, bg = "" } },
 	{ 0, "WhichKeyFloat", { bg = "" } },
 
-	{ 0, "NormalFloat", { fg = c.fg_float, bg = "none" } },
-	{ 0, "FloatBorder", { fg = c.border_highlight, bg = "none" } },
 	{ 0, "LineNr", { fg = "#ffffff" } }, -- Line Nummber
 
 	{ 0, "NotifyBackground", { bg = "" } },

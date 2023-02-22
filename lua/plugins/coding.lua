@@ -50,7 +50,6 @@ return {
 			require("plugins.coding.chatgpt")
 		end,
 	},
-
 	{
 		"folke/trouble.nvim",
 		lazy = true,

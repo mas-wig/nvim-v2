@@ -10,9 +10,10 @@ return navigator.setup({
 	height = 0.3,
 	preview_height = 0.35,
 	border = "rounded",
-	on_attach = function(client, _)
+	on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
+		require("plugins.lsp.keymaps").on_attach(client, bufnr)
 	end,
 	ts_fold = true,
 	default_mapping = false,
@@ -46,6 +47,7 @@ return navigator.setup({
 			"solargraph",
 			"yamlls",
 			"lua_ls",
+			"sumneko_lua",
 			"ccls",
 			"sqls",
 			"gopls",
@@ -94,11 +96,6 @@ return navigator.setup({
 		diagnostic_virtual_text = true,
 		diagnostic_update_in_insert = true,
 		display_diagnostic_qf = false,
-
-		phpactor = require("plugins.lsp.lspclient").phpactor,
-		clangd = require("plugins.lsp.lspclient").clangd,
-		pyright = require("plugins.lsp.lspclient").pyright,
-		tsserver = require("plugins.lsp.lspclient").tsserver,
-		servers = { "sumneko_lua" },
+		servers = { "tsserver" },
 	},
 })

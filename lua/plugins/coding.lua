@@ -27,7 +27,10 @@ return {
 	{
 		"CRAG666/code_runner.nvim",
 		lazy = true,
-		keys = { { "<leader>rc", "<cmd>RunCode<cr>", desc = "Run Code" } },
+		keys = {
+			{ "<leader>rc", "<cmd>RunCode<cr>", desc = "Run Code" },
+			{ "<leader>rx", "<cmd>RunClose<cr>", desc = "Run CLose" },
+		},
 		cmd = { "RunCode", "RunFile", "RunProject", "RunClose", "CRFiletype", "CRProjects" },
 		config = function()
 			require("code_runner").setup({

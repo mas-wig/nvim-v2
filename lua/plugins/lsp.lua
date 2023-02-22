@@ -3,7 +3,6 @@ return {
 		"ray-x/navigator.lua",
 		event = { "BufReadPre", "BufNewFile" },
 		branch = "master",
-		keys = require("plugins.lsp.keymaps"),
 		config = function()
 			require("plugins.lsp.navigator")
 		end,
@@ -38,7 +37,6 @@ return {
 					"MasonInstall",
 				},
 				lazy = true,
-				build = ":MasonInstallAll",
 				config = function()
 					require("plugins.lsp.mason")
 				end,
@@ -47,13 +45,8 @@ return {
 				"williamboman/mason-lspconfig.nvim",
 				lazy = true,
 				config = function()
-					local ensure_installed = {}
-					local lspclient = require("plugins.lsp.lspclient")
-					for name, _ in pairs(lspclient) do
-						ensure_installed[#ensure_installed + 1] = name
-					end
 					require("mason-lspconfig").setup({
-						ensure_installed = ensure_installed,
+						ensure_installed = { "phpactor", "lua_ls", "pyright", "clangd" },
 						automatic_installation = true,
 					})
 				end,
@@ -78,9 +71,10 @@ return {
 						capabilities = require("cmp_nvim_lsp").update_capabilities(
 							vim.lsp.protocol.make_client_capabilities()
 						),
-						on_attach = function(client, _)
+						on_attach = function(client, bufnr)
 							client.server_capabilities.documentFormattingProvider = false
 							client.server_capabilities.documentRangeFormattingProvider = false
+							require("plugins.lsp.keymaps").on_attach(client, bufnr)
 						end,
 					},
 				},
@@ -113,9 +107,10 @@ return {
 			}
 			require("go").setup({
 				lsp_cfg = {
-					on_attach = function(client, _)
+					on_attach = function(client, bufnr)
 						client.server_capabilities.documentFormattingProvider = false
 						client.server_capabilities.documentRangeFormattingProvider = false
+						require("plugins.lsp.keymaps").on_attach(client, bufnr)
 					end,
 					capabilities = capabilities,
 				},

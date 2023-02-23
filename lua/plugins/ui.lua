@@ -4,7 +4,6 @@ return {
 		lazy = true,
 		event = "VimEnter",
 		config = function()
-			require("plugins.ui.tokyonight")
 			vim.cmd("colorscheme tokyonight")
 		end,
 	},

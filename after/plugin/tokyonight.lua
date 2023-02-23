@@ -4,8 +4,10 @@ if not present then
 	return
 end
 
+print("Haloooooooooooooooooooooooooooooooooo")
+
 return tokyonight.setup({
-	style = "storm",
+	style = "day",
 	transparent = false,
 	terminal_colors = true,
 	styles = {

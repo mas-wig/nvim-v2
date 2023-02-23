@@ -2,7 +2,6 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		lazy = true,
-		event = "VimEnter",
 	},
 	{
 		"akinsho/bufferline.nvim",

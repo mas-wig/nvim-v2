@@ -16,6 +16,26 @@ function M.on_attach(on_attach)
     })
 end
 
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+M.capabilities.textDocument.completion.completionItem = {
+    documentationFormat = {"markdown", "plaintext"},
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    tagSupport = {valueSet = {1}},
+    resolveSupport = {
+        properties = {
+            "documentation",
+            "detail",
+            "additionalTextEdits",
+        },
+    },
+}
+
 function M.toggle(option, silent, values)
     if values then
         if vim.opt_local[option]:get() == values[1] then

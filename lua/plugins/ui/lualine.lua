@@ -55,6 +55,7 @@ M.setup = function()
 				"crunner_main",
 				"terminal",
 				"help",
+				"dbui",
 				"NvimTree",
 				"toggleterm",
 				"dapui_console",

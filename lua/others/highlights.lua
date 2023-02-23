@@ -10,5 +10,6 @@ return {
 	{ "WhichKeyBorder", { fg = "#ace600", bg = "none" } },
 	{ "FloatBorder", { fg = "#e60073", bg = "none" } },
 	{ "WildMenu", { fg = "#bf40bf", bg = "none" } },
+	{ "NoiceCmdlinePrompt", fg = "none", bg = "#bfff80" },
 	{ "NoiceCmdlinePopupBorder", { fg = "#b84dff", bg = "none" } },
 }

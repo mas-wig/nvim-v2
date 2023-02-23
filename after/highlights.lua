@@ -1,0 +1,3 @@
+return {
+	{ "LineNr", { fg = "#ffffff" } },
+}

@@ -4,10 +4,8 @@ if not present then
 	return
 end
 
-print("Haloooooooooooooooooooooooooooooooooo")
-
-return tokyonight.setup({
-	style = "day",
+tokyonight.setup({
+	style = "night",
 	transparent = false,
 	terminal_colors = true,
 	styles = {
@@ -23,4 +21,11 @@ return tokyonight.setup({
 	hide_inactive_statusline = false,
 	dim_inactive = false,
 	lualine_bold = false,
+	on_highlights = function(highlights, _)
+		for _, hl in pairs(require("after.highlights")) do
+			highlights[hl[1]] = hl[2]
+		end
+	end,
 })
+
+vim.cmd("colorscheme tokyonight")

@@ -3,9 +3,6 @@ return {
 		"folke/tokyonight.nvim",
 		lazy = true,
 		event = "VimEnter",
-		config = function()
-			vim.cmd("colorscheme tokyonight")
-		end,
 	},
 	{
 		"akinsho/bufferline.nvim",

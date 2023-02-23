@@ -41,7 +41,7 @@ return {
 					position = "vert",
 					size = 60,
 				},
-				filetype_path = vim.fn.expand("~/.config/nvim/code_runner.json"),
+				filetype_path = vim.fn.expand("~/.config/nvim/after/code_runner.json"),
 				-- project_path = vim.fn.expand("~/.config/nvim/project_manager.json"),
 			})
 		end,

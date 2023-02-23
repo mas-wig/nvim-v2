@@ -69,8 +69,8 @@ return {
                     },
                     server = {
                         capabilities = require('cmp_nvim_lsp').default_capabilities(),
-                        on_attach = function(client, bufnr)
-                            require("plugins.lsp.keymaps").on_attach(client, bufnr)
+                        on_attach = function(client, buffer)
+                            require("plugins.lsp.keymaps").on_attach(client, buffer)
                             client.server_capabilities.documentFormattingProvider = false
                             client.server_capabilities.documentRangeFormattingProvider = false
                         end,

@@ -1,22 +1,18 @@
 local autocmd = vim.api.nvim_create_autocmd
 
-local function l_augroup(name)
-	return vim.api.nvim_create_augroup("vim_" .. name, { clear = true })
-end
-
 local function augroup(name)
 	return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
 -- Reload file
 autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
-	group = l_augroup("checktime"),
+	group = augroup("checktime"),
 	command = "checktime",
 })
 
 -- Highlight on yank
 autocmd("TextYankPost", {
-	group = l_augroup("highlight_yank"),
+	group = augroup("highlight_yank"),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -24,7 +20,7 @@ autocmd("TextYankPost", {
 
 -- resize splits if window got resized
 autocmd({ "VimResized" }, {
-	group = l_augroup("resize_splits"),
+	group = augroup("resize_splits"),
 	callback = function()
 		vim.cmd("tabdo wincmd =")
 	end,
@@ -32,7 +28,7 @@ autocmd({ "VimResized" }, {
 
 -- go to last loc when opening a buffer
 autocmd("BufReadPost", {
-	group = l_augroup("last_loc"),
+	group = augroup("last_loc"),
 	callback = function()
 		local mark = vim.api.nvim_buf_get_mark(0, '"')
 		local lcount = vim.api.nvim_buf_line_count(0)
@@ -44,7 +40,7 @@ autocmd("BufReadPost", {
 
 -- close some filetypes with <q>
 autocmd("FileType", {
-	group = l_augroup("close_with_q"),
+	group = augroup("close_with_q"),
 	pattern = {
 		"qf",
 		"help",
@@ -64,7 +60,7 @@ autocmd("FileType", {
 
 -- wrap and check for spell in text filetypes
 autocmd("FileType", {
-	group = l_augroup("wrap_spell"),
+	group = augroup("wrap_spell"),
 	pattern = { "gitcommit", "markdown" },
 	callback = function()
 		vim.opt_local.wrap = true

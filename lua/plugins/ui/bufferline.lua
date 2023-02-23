@@ -19,9 +19,6 @@ return bufferline.setup({
 			bold = false,
 			italic = false,
 		},
-		separator_selected = {
-			bg = "#44475a",
-		},
 	},
 
 	options = {
@@ -53,10 +50,10 @@ return bufferline.setup({
 		show_buffer_close_icons = true,
 		show_buffer_default_icon = true,
 		show_close_icon = true,
-		show_tab_indicators = true,
+		show_tab_indicators = false,
 		show_duplicate_prefix = true,
 		persist_buffer_sort = true,
-		separator_style = "thin",
+		separator_style = "thick",
 		enforce_regular_tabs = false,
 		always_show_bufferline = false,
 		hover = {

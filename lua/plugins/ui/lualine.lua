@@ -70,9 +70,13 @@ M.setup = function()
 			ignore_focus = { "terminal" },
 		},
 		sections = process_sections({
-			lualine_a = { "mode" },
+			lualine_a = {
+				{ "mode" },
+			},
 			lualine_b = {
 				{ "branch", color = { bg = "#2a8000" } },
+			},
+			lualine_c = {
 				{
 					"diff",
 					colored = true, --
@@ -84,9 +88,6 @@ M.setup = function()
 					symbols = { added = " ", modified = "  ", removed = "  " },
 					color = { bg = "#660044" },
 				},
-			},
-			lualine_c = {
-				{ "filetype" },
 			},
 			lualine_x = {
 				{
@@ -123,7 +124,7 @@ M.setup = function()
 				},
 				{ require("lsp-progress").progress, color = { fg = "#ffff33" } },
 			},
-			lualine_y = { "progress" },
+			lualine_y = { { "progress" }, { "filetype" }, { "searchcount" } },
 			lualine_z = { "location" },
 		}),
 	})

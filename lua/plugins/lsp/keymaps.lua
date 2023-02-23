@@ -19,15 +19,16 @@ function M.get()
 				end,
 				desc = "reference",
 			}, -- reference deprecated
+			-- {
+			-- 	mode = "i",
+			-- 	"<A-k>",
+			-- 	function()
+			-- 		vim.lsp.signature_help()
+			-- 	end,
+			-- 	desc = "signature_help",
+			-- },
 			{
 				mode = "i",
-				"<M-k>",
-				function()
-					vim.lsp.signature_help()
-				end,
-				desc = "signature_help",
-			},
-			{
 				"<c-k>",
 				function()
 					vim.lsp.buf.signature_help()
@@ -320,7 +321,6 @@ function M.on_attach(client, buffer)
 	for _, keys in pairs(keymaps) do
 		if not keys.has or client.server_capabilities[keys.has .. "Provider"] then
 			local opts = M.opts(keys)
-			---@diagnostic disable-next-line: no-unknown
 			opts.has = nil
 			opts.silent = true
 			opts.buffer = buffer

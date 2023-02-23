@@ -5,8 +5,7 @@ if not present then
 end
 
 return tokyonight.setup({
-	style = "night",
-	light_style = "day",
+	style = "storm",
 	transparent = false,
 	terminal_colors = true,
 	styles = {

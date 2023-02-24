@@ -100,6 +100,20 @@ map("n", "<leader>ud", Util.toggle_diagnostics, {desc = "Toggle Diagnostics"})
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, {desc = "Toggle Conceal"})
 
+-- lazygit
+map("n", "<leader>gg", function() Util.float_term({"lazygit"}, {cwd = Util.get_root()}) end, {desc = "Lazygit (root dir)"})
+map("n", "<leader>gG", function() Util.float_term({"lazygit"}) end, {desc = "Lazygit (cwd)"})
+
+-- floating terminal
+map("n", "<leader>ft", function() Util.float_term(nil, {cwd = Util.get_root()}) end, {desc = "Terminal (root dir)"})
+map("n", "<A-i>", function() Util.float_term() end, {desc = "Terminal (cwd)"})
+
+local function termcodes(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+map("t", "<c-x>", termcodes("<c-\\><c-n>"), {desc = "Enter Normal Mode"})
+
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", {desc = "Quit all"})
 

@@ -64,10 +64,8 @@ M.setup = function()
 end
 
 M.keymaps = {
-	{ "<A-i>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Open Float Term" } },
 	{ "<A-v>", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Open Vert Term" } },
 	{ "<A-h>", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Open Horz Term" } },
-	{ "<A-i>", "<cmd>ToggleTerm direction=float<cr>", { desc = "Open Float Term" }, mode = { "t" } },
 	{ "<A-v>", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Open Vert Term" }, mode = { "t" } },
 	{ "<A-h>", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Open Horz Term" }, mode = { "t" } },
 }

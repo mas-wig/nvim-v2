@@ -93,12 +93,12 @@ M.keymaps = function()
 			desc = "Tel Buffers",
 		},
 		{
-			"<leader>ff",
+			"<leader>fF",
 			key_telescope("files"),
 			desc = "Tel Find Files (root dir)",
 		},
 		{
-			"<leader>fF",
+			"<leader>ff",
 			key_telescope("files", {
 				cwd = false,
 			}),

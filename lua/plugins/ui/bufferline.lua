@@ -22,7 +22,7 @@ return bufferline.setup({
 	},
 
 	options = {
-		mode = "buffers",
+		mode = "tabs",
 		numbers = "none",
 		close_command = "bdelete! %d",
 		right_mouse_command = "bdelete! %d",

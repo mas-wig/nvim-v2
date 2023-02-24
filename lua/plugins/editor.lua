@@ -160,4 +160,18 @@ return {
 			vim.keymap.del({ "x", "o" }, "X")
 		end,
 	},
+
+	{
+		"windwp/nvim-spectre",
+		lazy = true,
+		keys = {
+			{
+				"<leader>sr",
+				function()
+					require("spectre").open()
+				end,
+				desc = "Replace in files (Spectre)",
+			},
+		},
+	},
 }

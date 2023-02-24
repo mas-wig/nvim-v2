@@ -1,7 +1,6 @@
 return {
 	{
 		"ray-x/navigator.lua",
-		event = { "BufReadPre", "BufNewFile" },
 		branch = "master",
 		config = function()
 			require("plugins.lsp.navigator")

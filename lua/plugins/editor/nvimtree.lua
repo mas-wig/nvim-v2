@@ -117,10 +117,10 @@ M.setup = function()
 			},
 		},
 		filters = {
-			dotfiles = false,
+			dotfiles = true,
 			git_clean = false,
 			no_buffer = false,
-			custom = {},
+			custom = { "node_modules", ".git" },
 			exclude = {},
 		},
 		filesystem_watchers = {

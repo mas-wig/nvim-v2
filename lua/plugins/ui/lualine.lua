@@ -44,12 +44,10 @@ M.setup = function()
 		return sections
 	end
 
-	return lualine.setup({
+	lualine.setup({
 		options = {
 			icons_enabled = true,
 			theme = "dracula",
-			component_separators = "",
-			section_separators = "",
 			disabled_filetypes = {
 				"lazy",
 				"crunner_main",
@@ -70,6 +68,7 @@ M.setup = function()
 			always_divide_middle = true,
 			ignore_focus = { "terminal" },
 		},
+
 		sections = process_sections({
 			lualine_a = {
 				{ "mode" },
@@ -90,9 +89,12 @@ M.setup = function()
 					color = { bg = "#660044" },
 				},
 				{
-					require("lazy.status").updates,
-					cond = require("lazy.status").has_updates,
-					color = { fg = "#ff9e64" },
+					function()
+						return require("nvim-navic").get_location()
+					end,
+					cond = function()
+						return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+					end,
 				},
 			},
 			lualine_x = {
@@ -137,6 +139,10 @@ M.setup = function()
 			},
 			lualine_z = { "location" },
 		}),
+	})
+	require("lualine").refresh({
+		scope = "tabpage", -- scope of refresh all/tabpage/window
+		place = { "statusline", "winbar", "tabline" }, -- lualine segment ro refresh.
 	})
 end
 

@@ -76,7 +76,6 @@ map("i", ";", ";<c-g>u")
 
 -- save file
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w!<cr><esc>", { desc = "Save file" })
-
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")

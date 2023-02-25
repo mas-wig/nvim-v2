@@ -138,18 +138,18 @@ return {
 	{
 		"echasnovski/mini.ai",
 		event = "VeryLazy",
+		init = function()
+			require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
+		end,
 		lazy = true,
-		dependencies = {
-			{
-				"nvim-treesitter/nvim-treesitter-textobjects",
-				init = function()
-					require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-				end,
-			},
-		},
 		config = function()
 			require("plugins.coding.miniai").setup()
 		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+        lazy = true,
 	},
 
 	{ "windwp/nvim-ts-autotag", ft = { "html", "jsx", "tsx", "vue" }, lazy = true },

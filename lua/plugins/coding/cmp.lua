@@ -86,7 +86,7 @@ M.cmpconfig = function()
 			end,
 		},
 		experimental = {
-			ghost_text = true,
+			ghost_text = false, -- bakal config sama cudieum
 		},
 		mapping = {
 			["<C-p>"] = cmp.mapping.select_prev_item(),

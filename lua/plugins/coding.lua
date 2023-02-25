@@ -89,7 +89,10 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
+		ft = "gitcommit",
+		init = function()
+			require("setup.lazyload").gitsigns()
+		end,
 		config = function()
 			require("plugins.coding.gitsign")
 		end,

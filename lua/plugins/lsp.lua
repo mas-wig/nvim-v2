@@ -22,15 +22,6 @@ return {
 				init = function()
 					require("setup.lazyload").on_file_open("nvim-lspconfig")
 				end,
-				dependencies = {
-					{
-						"hrsh7th/cmp-nvim-lsp",
-						lazy = true,
-						cond = function()
-							return require("setup.utils").has("nvim-cmp")
-						end,
-					},
-				},
 			},
 			{
 				"williamboman/mason.nvim",

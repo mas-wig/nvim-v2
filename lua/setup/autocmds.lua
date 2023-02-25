@@ -13,6 +13,13 @@ vim.cmd([[
     augroup END
     ]])
 
+
+autocmd("BufWinEnter",{
+    group = augroup("uncomment_newline"),
+    pattern = "*.*",
+    command = "set formatoptions-=cro"
+})
+
 -- Reload file
 autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	group = augroup("checktime"),

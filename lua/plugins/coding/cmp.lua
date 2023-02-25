@@ -36,10 +36,11 @@ M.cmpconfig = function()
 	end
 
 	local options = {
-		preselect = cmp.PreselectMode.None,
+		preselect = cmp.PreselectMode.Item,
 		sources = {
 			{ name = "cmp_tabnine" },
 			{ name = "nvim_lsp" },
+			{ name = "codeium" },
 			{ name = "luasnip" },
 			{ name = "buffer" },
 			{ name = "nvim_lua" },

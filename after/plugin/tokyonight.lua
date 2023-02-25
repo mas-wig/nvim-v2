@@ -14,7 +14,7 @@ tokyonight.setup({
 		functions = { italic = true },
 		variables = { italic = false },
 		sidebars = "dark",
-		floats = "dark",
+		floats = "",
 	},
 	sidebars = { "qf", "help", "terminal", "toggleterm", "lazy", "NvimTree", "trouble" },
 	day_brightness = 0.3,

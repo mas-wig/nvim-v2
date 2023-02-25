@@ -3,6 +3,7 @@ local g = vim.g
 
 g.mapleader = " "
 g.maplocalleader = " "
+g.codeium_disable_bindings = 1
 
 opt.autowrite = true
 
@@ -64,7 +65,7 @@ opt.updatetime = 200
 opt.wildmode = "longest:full,full"
 
 opt.wrap = true
-opt.sessionoptions = {"buffers", "curdir", "tabpages", "winsize"}
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.ruler = true
 
 -- fold
@@ -74,15 +75,15 @@ opt.foldlevelstart = 99
 opt.foldenable = true
 
 local default_providers = {
-    "node",
-    "perl",
-    "python3",
-    "ruby",
+	"node",
+	"perl",
+	"python3",
+	"ruby",
 }
 
 -- default provider
 for _, provider in ipairs(default_providers) do
-    g["loaded_" .. provider .. "_provider"] = 0
+	g["loaded_" .. provider .. "_provider"] = 0
 end
 
 -- indent blankline

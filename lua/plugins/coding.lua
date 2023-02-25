@@ -136,6 +136,52 @@ return {
 	},
 
 	{
+		"Exafunction/codeium.vim",
+		lazy = true,
+		keys = {
+			{
+				"<c-g>",
+				function()
+					return vim.fn["codeium#Accept"]()
+				end,
+				desc = "Accept Codeium",
+				expr = true,
+				mode = { "i" },
+			},
+			{
+				"<c-;>",
+				function()
+					return vim.fn["codeium#CycleCompletions"](1)
+				end,
+				desc = "CycleCompletions +1",
+				expr = true,
+				mode = { "i" },
+			},
+			{
+				"<c-,>",
+				function()
+					return vim.fn["codeium#CycleCompletions"](-1)
+				end,
+				desc = "CycleCompletions -1",
+				expr = true,
+				mode = { "i" },
+			},
+			{
+				"<c-x>",
+				function()
+					return vim.fn["codeium#Clear"]()
+				end,
+				desc = "Clear",
+				expr = true,
+				mode = { "i" },
+			},
+		},
+		init = function()
+			require("setup.lazyload").on_file_open("codeium.vim")
+		end,
+	},
+
+	{
 		"echasnovski/mini.ai",
 		event = "VeryLazy",
 		init = function()
@@ -149,7 +195,7 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-        lazy = true,
+		lazy = true,
 	},
 
 	{ "windwp/nvim-ts-autotag", ft = { "html", "jsx", "tsx", "vue" }, lazy = true },

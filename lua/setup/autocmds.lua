@@ -83,13 +83,6 @@ autocmd("BufWritePost", {
 	group = augroup("FormatAutogroup"),
 })
 
--- Remember folding
-vim.cmd([[augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave *.* mkview
-  autocmd BufWinEnter *.* silent! loadview
-augroup END]])
-
 -- refresh lsp-progress
 autocmd("User", {
 	pattern = "LspProgressStatusUpdated",

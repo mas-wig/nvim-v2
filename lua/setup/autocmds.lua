@@ -4,6 +4,15 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
+-- fold
+vim.cmd([[
+    augroup remember_folds
+        autocmd!
+        autocmd BufWinLeave *.* if &ft !=# 'help' | mkview | endif
+        autocmd BufWinEnter *.* if &ft !=# 'help' | silent! loadview | endif
+    augroup END
+    ]])
+
 -- Reload file
 autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	group = augroup("checktime"),

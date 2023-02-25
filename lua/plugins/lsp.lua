@@ -2,6 +2,8 @@ return {
 	{
 		"ray-x/navigator.lua",
 		branch = "master",
+        lazy = true,
+        event = {"BufWinEnter"},
 		config = function()
 			require("plugins.lsp.navigator")
 		end,

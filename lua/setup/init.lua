@@ -17,12 +17,14 @@ end
 
 M.add_plugins = function()
 	M.add_lazy()
-	local options = {
+	return require("lazy").setup({
 		defaults = {
 			lazy = false,
 			version = "*",
 		},
-		spec = { { import = "plugins" } },
+		spec = {
+			{ import = "plugins" },
+		},
 		install = {
 			missing = true,
 			colorscheme = { "tokyonight" },
@@ -90,8 +92,7 @@ M.add_plugins = function()
 				},
 			},
 		},
-	}
-	require("lazy").setup(options)
+	})
 end
 
 M.run = function()

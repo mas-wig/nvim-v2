@@ -58,10 +58,10 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
-		lazy = true,
 		version = false,
+		lazy = true,
+		event = { "BufRead", "BufWinEnter" },
 		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("plugins.coding.treesitter")
 		end,

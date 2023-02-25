@@ -9,10 +9,3 @@ autocmd("VimEnter", {
 	group = groups("reload_buf"),
 	command = "bufdo! e",
 })
-
-vim.cmd([[
-augroup remember_folds
-    autocmd!
-    autocmd BufWinLeave *.* if &ft !=# 'help' | mkview | endif
-    autocmd BufWinEnter *.* if &ft !=# 'help' | silent! loadview | endif
-augroup END]])

@@ -8,6 +8,8 @@ M.setup = function()
 		return
 	end
 
+--  executable formatter harus ada dalam environment variables path
+
 	formatter.setup({
 		logging = false,
 		log_level = vim.log.levels.WARN,

@@ -25,7 +25,6 @@ M.setup = function()
 			["'"] = "Balanced '",
 			["`"] = "Balanced `",
 			["("] = "Balanced (",
-			[")"] = "Balanced ) including white-space",
 			[">"] = "Balanced > including white-space",
 			["<lt>"] = "Balanced <",
 			["]"] = "Balanced ] including white-space",

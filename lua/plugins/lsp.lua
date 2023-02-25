@@ -2,8 +2,10 @@ return {
 	{
 		"ray-x/navigator.lua",
 		branch = "master",
-        lazy = true,
-        event = {"BufWinEnter"},
+		lazy = true,
+		init = function()
+			require("setup.lazyload").on_file_open("navigator.lua")
+		end,
 		config = function()
 			require("plugins.lsp.navigator")
 		end,
@@ -17,6 +19,9 @@ return {
 			{
 				"neovim/nvim-lspconfig",
 				lazy = true,
+				init = function()
+					require("setup.lazyload").on_file_open("nvim-lspconfig")
+				end,
 				dependencies = {
 					{
 						"hrsh7th/cmp-nvim-lsp",

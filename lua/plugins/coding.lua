@@ -60,7 +60,9 @@ return {
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
 		version = false,
 		lazy = true,
-		event = { "BufRead", "BufWinEnter" },
+		init = function()
+			require("setup.lazyload").on_file_open("nvim-treesitter")
+		end,
 		build = ":TSUpdate",
 		config = function()
 			require("plugins.coding.treesitter")
@@ -137,7 +139,6 @@ return {
 		dependencies = {
 			{
 				"nvim-treesitter/nvim-treesitter-textobjects",
-				lazy = true,
 				init = function()
 					require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
 				end,

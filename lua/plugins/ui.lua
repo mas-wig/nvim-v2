@@ -7,7 +7,9 @@ return {
 		"akinsho/bufferline.nvim",
 		dependencies = { "tiagovla/scope.nvim", lazy = true },
 		lazy = true,
-		event = "VimEnter",
+		init = function()
+			require("setup.lazyload").buffeline()
+		end,
 		config = function()
 			require("plugins.ui.bufferline")
 		end,

@@ -49,4 +49,17 @@ M.gitsigns = function()
 	})
 end
 
+M.buffeline = function()
+	autocmd({ "BufAdd", "TabEnter" }, {
+		pattern = "*",
+		group = vim.api.nvim_create_augroup("BufferLineLazyLoading", {}),
+		callback = function()
+			local count = #vim.fn.getbufinfo({ buflisted = 1 })
+			if count >= 2 then
+				require("lazy").load({ plugins = { "bufferline.nvim" } })
+			end
+		end,
+	})
+end
+
 return M

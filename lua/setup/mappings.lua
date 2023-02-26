@@ -76,12 +76,10 @@ map("i", ";", ";<c-g>u")
 
 -- save file
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w!<cr><esc>", { desc = "Save file" })
+
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-
--- lazy
-map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })

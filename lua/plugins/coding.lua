@@ -111,6 +111,7 @@ return {
 	{
 		"pwntester/octo.nvim",
 		lazy = true,
+		branch = "master",
 		cmd = { "Octo" },
 		config = function()
 			require("plugins.coding.octo")

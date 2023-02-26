@@ -1,33 +1,5 @@
 local M = {}
 
-M.cmp_kinds = {
-	Text = "✏️  ",
-	Method = "📦 ",
-	Function = "🔧 ",
-	Constructor = "🔩 ",
-	Field = "🧲 ",
-	Variable = "🔌 ",
-	Class = "📚 ",
-	Interface = "🎏 ",
-	Module = "📜 ",
-	Property = "🔮 ",
-	Unit = "📏 ",
-	Value = "📮 ",
-	Enum = "📥 ",
-	Keyword = "🔑 ",
-	Snippet = "🎲 ",
-	Color = "🎨 ",
-	File = "📋 ",
-	Reference = "🔗 ",
-	Folder = "📁 ",
-	EnumMember = "📐 ",
-	Constant = "📤 ",
-	Struct = "🎯 ",
-	Event = "⏳ ",
-	Operator = "🧭 ",
-	TypeParameter = "🎈 ",
-}
-
 M.cmpconfig = function()
 	local present, cmp = pcall(require, "cmp")
 
@@ -80,7 +52,7 @@ M.cmpconfig = function()
 						vim_item.dup = 0
 					end
 
-					vim_item.kind = M.cmp_kinds[vim_item.kind] .. vim_item.kind
+					vim_item.kind = require("others.icons").cmp[vim_item.kind] .. vim_item.kind
 				end
 				return vim_item
 			end,

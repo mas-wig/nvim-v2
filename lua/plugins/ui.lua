@@ -178,7 +178,7 @@ return {
 				separator = "  ",
 				highlight = true,
 				depth_limit = 4,
-				icons = require("plugins.coding.cmp").cmp_kinds,
+				icons = require("others.icons").winbar,
 			}
 		end,
 	},

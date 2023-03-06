@@ -13,9 +13,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
+
+	--------------------------------------------------------
+	--------- JANGAN OTAK ATIK SEMUA BAGIAN INI ------------
+	--------------------------------------------------------
+
 	root = vim.fn.stdpath("data") .. "/lazy",
 	defaults = {
-		lazy = false, -- version = "*" 
+		lazy = false, -- version = "*"
 	},
 	spec = {
 		{ import = "plugins.coding" },

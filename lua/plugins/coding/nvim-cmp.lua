@@ -35,13 +35,23 @@ return {
 		},
 	},
 	config = function()
-		local ok, cmp = pcall(require, "cmp")
-
-		if not ok then
-			return
-		end
+		local _, cmp = pcall(require, "cmp")
+		local compare = require("cmp.config.compare")
 
 		return cmp.setup({
+			sorting = {
+				priority_weight = 2,
+				comparators = {
+					compare.recently_used,
+					compare.offset,
+					compare.exact,
+					compare.score,
+					compare.kind,
+					compare.sort_text,
+					compare.length,
+					compare.order,
+				},
+			},
 			preselect = cmp.PreselectMode.None,
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },

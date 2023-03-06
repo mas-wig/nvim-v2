@@ -38,19 +38,8 @@ return {
 	},
 	config = function()
 		return require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"lua",
-				"markdown",
-				"markdown_inline",
-				"vim",
-				"regex",
-				"sql",
-				"go",
-				"javascript",
-				"html",
-				"css",
-			},
-			sync_install = true,
+			ensure_installed = "all",
+			sync_install = false,
 			ignore_install = { "phpdoc" },
 			highlight = {
 				enable = true,

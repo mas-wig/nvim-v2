@@ -1,105 +1,25 @@
-local M = {}
+local path = vim.fn.stdpath("config") .. "/lua/setup"
+local loaded_files = {}
 
-M.add_lazy = function()
-	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-	if not vim.loop.fs_stat(lazypath) then
-		vim.fn.system({
-			"git",
-			"clone",
-			"--filter=blob:none",
-			"https://github.com/folke/lazy.nvim.git",
-			"--branch=stable", -- latest stable release
-			lazypath,
-		})
-	end
-	vim.opt.rtp:prepend(lazypath)
-end
+-- Load options.lua
+local options = require("setup.options")
+loaded_files["options"] = options
 
-M.add_plugins = function()
-	M.add_lazy()
-	return require("lazy").setup({
-		defaults = {
-			lazy = false,
-			version = "*",
-		},
-		spec = {
-			{ import = "plugins" },
-		},
-		install = {
-			missing = true,
-			colorscheme = { "tokyonight" },
-		},
-		change_detection = {
-			enabled = true,
-			notify = true,
-		},
-		ui = {
-			icons = {
-				cmd = "⌘",
-				config = "🛠",
-				event = "📅",
-				ft = "📂",
-				init = "⚙",
-				keys = "🗝",
-				plugin = "🔌",
-				runtime = "💻",
-				source = "📄",
-				start = "🚀",
-				task = "📌",
-				lazy = "💤 ",
-			},
-		},
-		checker = {
-			enabled = true,
-			concurrency = nil,
-			notify = true,
-			frequency = 3600,
-		},
-		performance = {
-			cache = {
-				enabled = true,
-			},
-			reset_packpath = true,
-			rtp = {
-				reset = true,
-				disabled_plugins = {
-					"2html_plugin",
-					"getscript",
-					"getscriptPlugin",
-					"gzip",
-					"logipat",
-					"netrw",
-					"netrwPlugin",
-					"netrwSettings",
-					"netrwFileHandlers",
-					"matchit",
-					"tar",
-					"tarPlugin",
-					"rrhelper",
-					"spellfile_plugin",
-					"vimball",
-					"vimballPlugin",
-					"zip",
-					"zipPlugin",
-					"tutor",
-					"rplugin",
-					"syntax",
-					"synmenu",
-					"optwin",
-					"compiler",
-					"bugreport",
-					"ftplugin",
-				},
-			},
-		},
-	})
-end
+-- Load lazy.lua
+local lazy = require("setup.lazy")
+loaded_files["lazy"] = lazy
 
-M.run = function()
-	require("setup.options")
-	M.add_plugins()
-	require("setup.mappings")
-	require("setup.autocmds")
-end
+-- Load mapping.lua
+local mappings = require("setup.mappings")
+loaded_files["mappings"] = mappings
 
-return M
+-- Load autocmd.lua
+local autocmds = require("setup.autocmds")
+loaded_files["autocmds"] = autocmds
+
+-- Return the loaded modules
+return setmetatable({}, {
+	__index = function(_, k)
+		return loaded_files[k] or require(path .. "." .. k)
+	end,
+})

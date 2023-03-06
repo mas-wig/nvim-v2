@@ -1,101 +1,32 @@
-local present, navigator = pcall(require, "navigator")
-
-if not present then
-	return
-end
-
-return navigator.setup({
-	debug = false,
-	width = 0.75,
-	height = 0.3,
-	preview_height = 0.35,
-	border = "rounded",
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-		require("plugins.lsp.keymaps").on_attach(client, bufnr)
+return {
+	"ray-x/navigator.lua",
+	branch = "master",
+	event = { "BufReadPre", "BufNewFile" },
+	lazy = true,
+	dependencies = {
+		"ray-x/guihua.lua",
+		branch = "master",
+		lazy = true,
+		build = "cd lua/fzy && make",
+	},
+	config = function()
+		return require("navigator").setup({
+			border = "rounded",
+			ts_fold = true,
+			default_mapping = false,
+			transparency = 100,
+			lsp_signature_help = false,
+			lsp = {
+				disable_lsp = "all",
+				diagnostic = {
+					underline = true,
+					virtual_text = true,
+					update_in_insert = true,
+				},
+				diagnostic_virtual_text = true,
+				diagnostic_update_in_insert = true,
+				disply_diagnostic_qf = true,
+			},
+		})
 	end,
-	ts_fold = true,
-	default_mapping = false,
-	treesitter_analysis = true,
-	treesitter_navigation = true,
-	treesitter_analysis_max_num = 100,
-	treesitter_analysis_condense = true,
-	transparency = 100,
-	lsp_signature_help = false,
-	signature_help_cfg = nil,
-	icons = {
-		code_action_icon = "💡",
-		diagnostic_head = "🐛",
-		diagnostic_head_severity_1 = "‼️",
-	},
-	mason = true,
-	lsp = {
-		enable = true,
-		disable_lsp = {
-			"angularls",
-			"flow",
-			"bashls",
-			"dockerls",
-			"julials",
-			"pylsp",
-			"jedi_language_server",
-			"jdtls",
-			"vimls",
-			"html",
-			"jsonls",
-			"solargraph",
-			"yamlls",
-			"lua_ls",
-			"sumneko_lua",
-			"ccls",
-			"sqls",
-			"gopls",
-			"denols",
-			"graphql",
-			"dartls",
-			"dotls",
-			"kotlin_language_server",
-			"nimls",
-			"intelephense",
-			"vuels",
-			"omnisharp",
-			"r_language_server",
-			"terraformls",
-			"svelte",
-			"texlab",
-			"rust_analyzer",
-			"clojure_lsp",
-			"elixirls",
-			"sourcekit",
-			"fsautocomplete",
-			"vls",
-			"hls",
-		},
-		code_action = {
-			enable = true,
-			sign = true,
-			sign_priority = 40,
-			virtual_text = true,
-		},
-		code_lens_action = {
-			enable = true,
-			sign = true,
-			sign_priority = 40,
-			virtual_text = true,
-		},
-		document_highlight = true,
-		format_on_save = false,
-		diagnostic = {
-			underline = true,
-			virtual_text = true,
-			update_in_insert = true,
-		},
-
-		diagnostic_scrollbar_sign = { "▃", "▆", "█" },
-		diagnostic_virtual_text = true,
-		diagnostic_update_in_insert = true,
-		display_diagnostic_qf = false,
-		servers = { "tsserver" },
-	},
-})
+}

@@ -158,3 +158,11 @@ autocmd("FileType", {
 		})
 	end,
 })
+
+autocmd("BufWritePre", {
+	pattern = "*.go",
+	callback = function()
+		require("go.format").goimport()
+	end,
+	group = augroup("GoFormat"),
+})

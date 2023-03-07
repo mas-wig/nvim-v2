@@ -98,9 +98,7 @@ return {
 		vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
 		vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 
-		local dap_configs = {
-			go = require("plugins.dap.config.dap-go").golang(),
-		}
+		local dap_configs = {}
 
 		for dap_name, dap_options in pairs(dap_configs) do
 			dap.adapters[dap_name] = dap_options.adapters

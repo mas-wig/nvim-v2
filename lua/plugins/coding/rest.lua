@@ -1,6 +1,8 @@
 return {
 	"rest-nvim/rest.nvim",
 	ft = { "http" },
+    cmd = {"RestNvim","RestNvimPreview","RestNvimLast"},
+    keys = {{"<leader>rs","<Plug>RestNvim<cr>","Run Under Cursor Rest"}},
 	config = function()
 		return require("rest-nvim").setup({
 			result_split_horizontal = false,

@@ -11,6 +11,24 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
 		{ "petertriho/cmp-git", lazy = true, config = true },
 		{
+			"tzachar/cmp-tabnine",
+			build = "./install.sh",
+			config = function()
+				local tabnine = require("cmp_tabnine.config")
+				tabnine:setup({
+					max_lines = 1000,
+					max_num_results = 20,
+					sort = true,
+					run_on_every_keystroke = true,
+					snippet_placeholder = "..",
+					ignored_file_types = {
+						txt = true,
+					},
+					show_prediction_strength = false,
+				})
+			end,
+		},
+		{
 			"L3MON4D3/LuaSnip",
 			dependencies = { "rafamadriz/friendly-snippets", lazy = true },
 			lazy = true,
@@ -42,6 +60,7 @@ return {
 			sorting = {
 				priority_weight = 2,
 				comparators = {
+					require("cmp_tabnine.compare"),
 					compare.recently_used,
 					compare.offset,
 					compare.exact,
@@ -55,6 +74,7 @@ return {
 			preselect = cmp.PreselectMode.None,
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+				{ name = "cmp_tabnine" },
 				{ name = "git" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
@@ -80,10 +100,19 @@ return {
 			formatting = {
 				format = function(entry, vim_item)
 					local cmp_kinds = require("helper.icons").cmp
-					local source = entry.source.name
-					if source == "luasnip" or source == "nvim_lsp" then
-						vim_item.dup = 0
-						vim_item.kind = cmp_kinds[vim_item.kind] .. vim_item.kind
+					if entry.source.name == "cmp_tabnine" then
+						local detail = (entry.completion_item.data or {}).detail
+						if detail and detail:find(".*%%.*") then
+							vim_item.kind = string.format("%s %s %s", "🔥", "Tabnine", detail)
+						else
+							vim_item.kind = string.format("%s %s", "✏️ ", "Text")
+						end
+					else
+						local source = entry.source.name
+						if source == "luasnip" or source == "nvim_lsp" then
+							vim_item.dup = 0
+							vim_item.kind = cmp_kinds[vim_item.kind] .. vim_item.kind
+						end
 					end
 					return vim_item
 				end,

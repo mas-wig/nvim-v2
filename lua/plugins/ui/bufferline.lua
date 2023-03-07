@@ -1,6 +1,12 @@
 return {
 	"akinsho/bufferline.nvim",
-	dependencies = { "tiagovla/scope.nvim", lazy = true },
+	dependencies = {
+		"tiagovla/scope.nvim",
+		lazy = true,
+		config = function()
+			return require("scope").setup()
+		end,
+	},
 	lazy = true,
 	init = function()
 		require("setup.plugins").buffeline()
@@ -63,7 +69,7 @@ return {
 				persist_buffer_sort = true,
 				separator_style = "thin",
 				enforce_regular_tabs = false,
-				always_show_bufferline = false,
+				always_show_bufferline = true,
 				hover = {
 					enabled = true,
 					delay = 200,

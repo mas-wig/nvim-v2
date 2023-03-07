@@ -16,7 +16,7 @@ return {
 			},
 			sidebars = { "qf", "help", "terminal", "toggleterm", "lazy", "NvimTree", "trouble" },
 			day_brightness = 0.3,
-			hide_inactive_statusline = true,
+			hide_inactive_statusline = false,
 			dim_inactive = false,
 			lualine_bold = false,
 			on_highlights = function(highlights, _)

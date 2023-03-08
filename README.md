@@ -1,7 +1,7 @@
 # My personal neovim setup 🤡
 
 ## Requirements for this setup 
-- git and github cli installed on your local machine
+- `git` and `github1` cli installed on your local machine and set and save your `$GH_TOKEN` on your `$PATH` _[octo](https://github.com/pwntester/octo.nvim) plugins need this_
 - Your terminal must support unicode and ascii characters **Its MUST!!!**
 - GCC executable and `make` installed and **must set on your $PATH** see [this](https://code.visualstudio.com/docs/cpp/config-mingw)
     - if you windows user and dont know how to install see [this](https://www.mingw-w64.org)

@@ -98,15 +98,11 @@ return {
 		vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
 		vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 
-		local dap_configs = {}
+		local dap_configs = { go = require("plugins.dap.config.dap-go").go() }
 
 		for dap_name, dap_options in pairs(dap_configs) do
 			dap.adapters[dap_name] = dap_options.adapters
 			dap.configurations[dap_name] = dap_options.configurations
 		end
-
-		vim.api.nvim_create_autocmd("VimLeave", {
-			command = "lua require('dap')._vim_exit_handler()",
-		})
 	end,
 }

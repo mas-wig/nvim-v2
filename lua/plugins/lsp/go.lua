@@ -28,30 +28,7 @@ return {
 			luasnip = true,
 			lsp_diag_update_in_insert = true,
 			lsp_keymaps = false,
-			dap_debug_gui = {
-				layouts = {
-					{
-						elements = {
-							{ id = "watches", size = 0.20 },
-							{ id = "stacks", size = 0.30 },
-							{ id = "breakpoints", size = 0.30 },
-							{ id = "scopes", size = 0.30 },
-						},
-						size = 64,
-						position = "right",
-					},
-					{
-						elements = {
-							"repl",
-							"console",
-							"watches",
-						},
-						size = 0.30,
-						position = "bottom",
-					},
-				},
-			},
-			dap_debug_vt = { enabled_commands = true, all_frames = true },
+			dap_debug = false,
 		})
 	end,
 }

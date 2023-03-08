@@ -6,6 +6,7 @@
 - GCC executable and `make` installed and **must set on your $PATH** see [this](https://code.visualstudio.com/docs/cpp/config-mingw)
     - if you windows user and dont know how to install see [this](https://www.mingw-w64.org)
 - [Nerd Font](https://github.com/ryanoasis/nerd-fonts) installed 
+- External formatter executable installed and set on your $PATH like prettier,gofmt,sytlua,etc.... 
 - For tabnine plugin windows setup see [this](https://github.com/tzachar/cmp-tabnine)
 
 ---

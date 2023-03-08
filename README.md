@@ -31,5 +31,5 @@
 - Formatter code
 - Refactoring
 - Diagnostics and Analysis with Navigator
-- AND MANY SHIT......
+- AND MANY MORE SHIT......
 

@@ -76,6 +76,7 @@ return {
 					{ "mode" },
 				},
 				lualine_b = {
+					{ "filetype" },
 					{ "branch", color = { bg = "#2a8000" } },
 				},
 				lualine_c = {
@@ -136,7 +137,6 @@ return {
 				},
 				lualine_y = {
 					{ "progress" },
-					{ "filetype" },
 					{ "searchcount" },
 				},
 				lualine_z = { "location" },

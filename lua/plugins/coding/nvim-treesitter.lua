@@ -7,7 +7,7 @@ return {
 		init = function()
 			require("setup.plugins").on_file_open("nvim-treesitter")
 		end,
-		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
+		cmd = { "TSInstall", "TSBufEnable", "TSUpdate", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
 		dependencies = {
 			{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 			{ "windwp/nvim-ts-autotag", lazy = true, config = true },

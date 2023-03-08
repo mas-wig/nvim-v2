@@ -26,6 +26,7 @@ return {
 			view = {
 				hide_root_folder = true,
 				side = "left",
+				width = 35,
 			},
 			renderer = {
 				indent_markers = {

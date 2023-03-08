@@ -13,7 +13,7 @@ return {
 		return {
 			separator = "  ",
 			highlight = true,
-			depth_limit = 4,
+			depth_limit = 3,
 			icons = require("helper.icons").winbar,
 		}
 	end,

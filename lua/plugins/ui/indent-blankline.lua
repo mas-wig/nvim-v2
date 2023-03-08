@@ -3,7 +3,16 @@ return {
 	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		require("indent_blankline").setup({
-			filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
+			filetype_exclude = {
+				"help",
+				"alpha",
+				"dashboard",
+				"neo-tree",
+				"Trouble",
+				"lazy",
+				"notify",
+				"TelescopePrompt",
+			},
 			char = "│",
 			show_current_context = false,
 			show_current_context_start = false,

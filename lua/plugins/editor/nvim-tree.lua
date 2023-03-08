@@ -74,7 +74,7 @@ return {
 				dotfiles = false,
 				git_clean = false,
 				no_buffer = false,
-				custom = { "alpha", "lazy" },
+				custom = { ".git", "node_modules", ".gitignore", "alpha", "lazy" },
 				exclude = {},
 			},
 		})

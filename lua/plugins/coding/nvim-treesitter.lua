@@ -13,7 +13,6 @@ return {
 			{ "windwp/nvim-ts-autotag", lazy = true, config = true },
 			{ "RRethy/nvim-treesitter-endwise", lazy = true },
 			{ "HiPhish/nvim-ts-rainbow2", lazy = true },
-			{ "nvim-treesitter/nvim-treesitter-context", lazy = true, config = true },
 			{ "nvim-treesitter/playground", lazy = true },
 			{
 				"windwp/nvim-autopairs",
@@ -89,6 +88,19 @@ return {
 			if not enabled then
 				require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
 			end
+		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
+		config = function()
+			return require("treesitter-context").setup({
+				max_lines = 2,
+				trim_scope = "outer",
+				min_window_height = 0,
+			})
 		end,
 	},
 }

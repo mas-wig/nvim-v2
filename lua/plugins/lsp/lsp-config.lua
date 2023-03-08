@@ -5,6 +5,7 @@ return {
 		require("setup.plugins").on_file_open("nvim-lspconfig")
 	end,
 	dependencies = {
+		{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } }, ft = "lua" },
 		{ "williamboman/mason-lspconfig.nvim", lazy = true },
 		{ "williamboman/mason.nvim", lazy = true },
 		{

@@ -202,7 +202,7 @@ return {
 				file_ignore_patterns = {
 					"node_modules",
 					"assets",
-					".git",
+					".git/*",
 					"^target",
 					"%.aux",
 					"%.toc",

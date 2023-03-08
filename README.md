@@ -10,7 +10,7 @@
 
 ---
 
-## Plugins Show up
+## Show up
 ![2023-03-08-22:55:51-screenshot](https://user-images.githubusercontent.com/88357663/223770055-e182a376-a7ef-4b57-a698-4363f780704f.png)
 
 ### Telescope

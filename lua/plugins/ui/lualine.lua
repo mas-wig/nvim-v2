@@ -2,149 +2,146 @@ return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
 	lazy = true,
+
 	config = function()
-		local present, lualine = pcall(require, "lualine")
+		local colors = require("helper.colors")
 
-		if not present then
-			return
-		end
-
-		local colors = {
-			red = "#ca1243",
-			white = "#f3f3f3",
-			green = "#8ec07c",
-			sep = "#1a1b26",
-			blue = "#0099ff",
-			yellow = "#ffff4d",
+		local conditions = {
+			buffer_not_empty = function()
+				return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+			end,
+			hide_in_width = function()
+				return vim.fn.winwidth(0) > 80
+			end,
+			check_git_workspace = function()
+				local filepath = vim.fn.expand("%:p:h")
+				local gitdir = vim.fn.finddir(".git", filepath .. ";")
+				return gitdir and #gitdir > 0 and #gitdir < #filepath
+			end,
 		}
 
-		local empty = require("lualine.component"):extend()
-		function empty:draw(default_highlight)
-			self.status = ""
-			self.applied_separator = ""
-			self:apply_highlights(default_highlight)
-			self:apply_section_separators()
-			return self.status
-		end
-
-		local function process_sections(sections)
-			for name, section in pairs(sections) do
-				local left = name:sub(9, 10) < "x"
-
-				for pos = 1, name ~= "lualine_z" and #section or #section - 1 do
-					table.insert(section, pos * 2, { empty, color = { fg = colors.sep, bg = colors.sep } })
-				end
-
-				for id, comp in ipairs(section) do
-					if type(comp) ~= "table" then
-						comp = { comp }
-						section[id] = comp
-					end
-					comp.separator = left and { right = "" } or { left = "" }
-				end
-			end
-			return sections
-		end
-
-		lualine.setup({
+		local configs = {
 			options = {
-				icons_enabled = true,
-				theme = "dracula",
-				disabled_filetypes = {
-					"lazy",
-					"crunner_main",
-					"terminal",
-					"help",
-					"dbui",
-					"NvimTree",
-					"toggleterm",
-					"dapui_console",
-					"dapui_watches",
-					"dapui_scopes",
-					"dapui_breakpoints",
-					"dapui_stacks",
-					"spectre_panel",
-					"dap_repl",
-					"aplha",
+				component_separators = "",
+				section_separators = "",
+				theme = {
+					normal = { c = { fg = colors.lualine_fg, bg = colors.lualine_bg } },
+					inactive = { c = { fg = colors.lualine_fg, bg = colors.lualine_bg } },
 				},
-				always_divide_middle = true,
-				ignore_focus = { "terminal" },
+				refresh = {
+					statusline = 1000,
+					tabline = 1000,
+					winbar = 1000,
+				},
 			},
+			sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_y = {},
+				lualine_z = {},
+				lualine_c = {},
+				lualine_x = {},
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_y = {},
+				lualine_z = {},
+				lualine_c = {},
+				lualine_x = {},
+			},
+			winbar = {
+				lualine_a = {},
+			},
+		}
 
-			sections = process_sections({
-				lualine_a = {
-					{ "mode" },
-				},
-				lualine_b = {
-					{ "filetype" },
-					{ "branch", color = { bg = "#2a8000" } },
-				},
-				lualine_c = {
-					{
-						"diff",
-						colored = true, --
-						diff_color = {
-							added = { fg = "#1aff1a" },
-							removed = { fg = "#ff4d4d" },
-							modified = { fg = "#e6e600" },
-						},
-						symbols = { added = " ", modified = "  ", removed = "  " },
-						color = { bg = "#660044" },
-					},
-					{
-						function()
-							return require("nvim-navic").get_location()
-						end,
-						cond = function()
-							return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-						end,
-					},
-				},
-				lualine_x = {
-					{
-						"diagnostics",
-						source = { "nvim_diagnostic" },
-						sections = { "error" },
-						symbols = { error = " " },
-						update_in_insert = true,
-						diagnostics_color = { error = { bg = colors.red, fg = colors.white } },
-					},
-					{
-						"diagnostics",
-						source = { "nvim_diagnostic" },
-						sections = { "warn" },
-						symbols = { warn = " " },
-						update_in_insert = true,
-						diagnostics_color = { warn = { bg = colors.yellow, fg = "#000000" } },
-					},
-					{
-						"diagnostics",
-						source = { "nvim_diagnostic" },
-						sections = { "info" },
-						symbols = { info = " " },
-						update_in_insert = true,
-						diagnostics_color = { warn = { bg = colors.blue, fg = "#000000" } },
-					},
-					{
-						"diagnostics",
-						source = { "nvim_diagnostic" },
-						sections = { "hint" },
-						symbols = { hint = " " },
-						update_in_insert = true,
-						diagnostics_color = { warn = { bg = colors.green, fg = "#000000" } },
-					},
-					{ require("lsp-progress").progress, color = { fg = "#ffff33" } },
-				},
-				lualine_y = {
-					{ "progress" },
-					{ "searchcount" },
-				},
-				lualine_z = { "location" },
-			}),
+		local function ins_winbar_left(component)
+			table.insert(configs.winbar.lualine_a, component)
+		end
+
+		local function ins_left(component)
+			table.insert(configs.sections.lualine_c, component)
+		end
+
+		local function ins_right(component)
+			table.insert(configs.sections.lualine_x, component)
+		end
+
+		ins_winbar_left({
+			function()
+				return require("nvim-navic").get_location()
+			end,
+			cond = function()
+				return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+			end,
 		})
-		require("lualine").refresh({
-			scope = "tabpage", -- scope of refresh all/tabpage/window
-			place = { "statusline", "winbar", "tabline" }, -- lualine segment ro refresh.
+
+		ins_left({
+			"mode",
+			color = function()
+				-- auto change color according to neovims mode
+				local mode_color = {
+					n = colors.red,
+					i = colors.green,
+					v = colors.blue,
+					[""] = colors.blue,
+					V = colors.blue,
+					c = colors.magenta,
+					no = colors.red,
+					s = colors.orange,
+					S = colors.orange,
+					[""] = colors.orange,
+					ic = colors.yellow,
+					R = colors.violet,
+					Rv = colors.violet,
+					cv = colors.red,
+					ce = colors.red,
+					r = colors.cyan,
+					rm = colors.cyan,
+					["r?"] = colors.cyan,
+					["!"] = colors.red,
+					t = colors.red,
+				}
+				return { fg = mode_color[vim.fn.mode()] }
+			end,
+			icons_enabled = true,
 		})
+
+		ins_left({
+			"branch",
+			icon = "",
+			color = { fg = colors.green, gui = "bold" },
+		})
+
+		ins_left({
+			"diff",
+			symbols = { added = " ", modified = " ", removed = " " },
+			diff_color = {
+				added = { fg = colors.green },
+				modified = { fg = colors.orange },
+				removed = { fg = colors.red },
+			},
+			cond = conditions.hide_in_width,
+		})
+
+		ins_right({
+			"diagnostics",
+			sources = { "nvim_diagnostic" },
+			symbols = { error = " ", warn = " ", info = " " },
+			diagnostics_color = {
+				color_error = { fg = colors.red },
+				color_warn = { fg = colors.yellow },
+				color_info = { fg = colors.cyan },
+			},
+		})
+
+		ins_right({
+			require("lsp-progress").progress,
+			color = { fg = "#ffff33" },
+		})
+
+		ins_right({ "progress", color = { fg = colors.lualine_fg, gui = "bold" } })
+
+		require("lualine").setup(configs)
 	end,
 }

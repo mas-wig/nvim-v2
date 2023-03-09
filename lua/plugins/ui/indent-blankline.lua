@@ -12,6 +12,7 @@ return {
 				"lazy",
 				"notify",
 				"TelescopePrompt",
+				"rest_nvim_results",
 			},
 			char = "│",
 			show_current_context = false,

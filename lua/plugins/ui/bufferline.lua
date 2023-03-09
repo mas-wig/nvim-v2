@@ -20,6 +20,12 @@ return {
 
 		return bufferline.setup({
 			highlights = {
+				buffer_visible = {
+					fg = "#009999",
+				},
+				fill = {
+					bg = "#1a1b26",
+				},
 				modified_selected = {
 					bg = "#44475a",
 				},
@@ -29,10 +35,12 @@ return {
 				},
 				buffer_selected = {
 					fg = "#4dffdb",
-					bg = "#44475a",
 					bold = false,
 					italic = false,
 				},
+				-- background = {
+				-- 	bg = "#44475a",
+				-- },
 			},
 
 			options = {
@@ -67,7 +75,7 @@ return {
 				show_tab_indicators = false,
 				show_duplicate_prefix = true,
 				persist_buffer_sort = true,
-				separator_style = "thin",
+				separator_style = "thick",
 				enforce_regular_tabs = false,
 				always_show_bufferline = true,
 				hover = {

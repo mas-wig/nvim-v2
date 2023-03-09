@@ -1,8 +1,8 @@
 return {
 	"rest-nvim/rest.nvim",
 	ft = { "http" },
-    cmd = {"RestNvim","RestNvimPreview","RestNvimLast"},
-    keys = {{"<leader>rs","<Plug>RestNvim<cr>","Run Under Cursor Rest"}},
+	cmd = { "RestNvim", "RestNvimPreview", "RestNvimLast" },
+	keys = { { "<leader>rs", "<Plug>RestNvim<cr>", "Run Under Cursor Rest" } },
 	config = function()
 		return require("rest-nvim").setup({
 			result_split_horizontal = false,
@@ -11,17 +11,17 @@ return {
 			encode_url = true,
 			highlight = {
 				enabled = true,
-				timeout = 150,
+				timeout = 300,
 			},
 			result = {
-				show_url = true,
+				show_url = false,
 				show_http_info = true,
 				show_headers = true,
 				formatters = {
-					json = "jq",
 					html = function(body)
 						return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
 					end,
+					json = "jq",
 				},
 			},
 		})

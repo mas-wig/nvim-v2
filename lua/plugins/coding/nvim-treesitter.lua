@@ -13,7 +13,6 @@ return {
 			{ "windwp/nvim-ts-autotag", lazy = true, config = true },
 			{ "RRethy/nvim-treesitter-endwise", lazy = true },
 			{ "HiPhish/nvim-ts-rainbow2", lazy = true },
-			{ "nvim-treesitter/playground", lazy = true },
 			{
 				"windwp/nvim-autopairs",
 				lazy = true,
@@ -97,10 +96,11 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			return require("treesitter-context").setup({
-				max_lines = 2,
+				max_lines = 1,
 				trim_scope = "outer",
 				min_window_height = 0,
 			})
 		end,
 	},
+	{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" }, lazy = true },
 }

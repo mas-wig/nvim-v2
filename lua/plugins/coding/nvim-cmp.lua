@@ -86,11 +86,11 @@ return {
 			window = {
 				completion = {
 					scrollbar = false,
-					border = "single",
+					border = "none",
 					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
 					side_padding = 1,
 				},
-				documentation = { border = "single" },
+				documentation = { border = "none" },
 			},
 			snippet = {
 				expand = function(args)

@@ -1,6 +1,6 @@
 return {
 	"linrongbin16/lsp-progress.nvim",
-	event = { "VimEnter" },
+	event = { "BufAdd", "TabEnter" },
 	lazy = true,
 	config = function()
 		require("lsp-progress").setup({

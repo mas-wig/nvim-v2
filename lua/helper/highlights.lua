@@ -67,7 +67,6 @@ return {
 	{ "GitSignsDelte", { fg = "#ff0000", bg = "#1a1b26" } },
 
 	{ "TreesitterContext", { bg = "#1a1b26" } },
-	{ "BufferLineIndicatorSelected", { fg = "#ffff00", bg = "none" } },
 
 	{ "DiagnosticVirtualTextError", { bg = "none", fg = c.error } },
 	{ "DiagnosticVirtualTextWarn", { bg = "none", fg = c.warning } },

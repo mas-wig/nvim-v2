@@ -38,9 +38,10 @@ return {
 					bold = false,
 					italic = false,
 				},
-				-- background = {
-				-- 	bg = "#44475a",
-				-- },
+				separator = {
+					bg = "#44475a",
+					fg = "#ffff4d",
+				},
 			},
 
 			options = {

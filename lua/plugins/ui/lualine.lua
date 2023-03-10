@@ -29,9 +29,7 @@ return {
 					inactive = { c = { fg = colors.lualine_fg, bg = colors.lualine_bg } },
 				},
 				refresh = {
-					statusline = 1000,
-					tabline = 1000,
-					winbar = 1000,
+					statusline = 500,
 				},
 				disabled_filetypes = {
 					"lazy",
@@ -150,7 +148,9 @@ return {
 			color = { fg = "#ffff33" },
 		})
 
-		ins_right({ "progress", color = { fg = colors.lualine_fg, gui = "bold" } })
+		ins_right({ "%l:%c", color = { fg = colors.orange, gui = "bold" } })
+		ins_right({ "%p%%", color = { fg = colors.green } })
+		ins_right({ "%L", color = { fg = colors.violet } })
 
 		require("lualine").setup(configs)
 	end,

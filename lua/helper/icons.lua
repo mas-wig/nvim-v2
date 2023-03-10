@@ -18,7 +18,7 @@ return {
 		Number = "🔢 ",
 		Boolean = "🔘 ",
 		Array = "📚 ",
-		Object = "🗂️ ",
+		Object = "🗂️  ",
 		Key = "🔑 ",
 		Null = "🅾️ ",
 		EnumMember = "🔢 ",

@@ -59,7 +59,7 @@ return {
 	{ "NavicIconsEvent", { bg = "#222436" } },
 	{ "NavicIconsOperator", { bg = "#222436" } },
 	{ "NavicIconsTypeParameter", { bg = "#222436" } },
-	{ "NavicText", { bg = "#222436", fg = "#b3ff1a" } },
+	{ "NavicText", { bg = "#222436", fg = "#33d6ff" } },
 	{ "NavicSeparator", { bg = "#222436", fg = "#ff66ff" } },
 
 	{ "GitSignsAdd", { fg = "#00e6ac", bg = "#222436" } },

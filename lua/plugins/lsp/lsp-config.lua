@@ -15,6 +15,7 @@ return {
 			end,
 		},
 	},
+
 	opts = { setup = {} },
 	config = function(_, opts)
 		local servers = require("plugins.lsp.config.lsp-server")

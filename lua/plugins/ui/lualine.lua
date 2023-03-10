@@ -33,6 +33,23 @@ return {
 					tabline = 1000,
 					winbar = 1000,
 				},
+				disabled_filetypes = {
+					"lazy",
+					"crunner_main",
+					"terminal",
+					"help",
+					"dbui",
+					"NvimTree",
+					"toggleterm",
+					"dapui_console",
+					"dapui_watches",
+					"dapui_scopes",
+					"dapui_breakpoints",
+					"dapui_stacks",
+					"spectre_panel",
+					"dap_repl",
+					"aplha",
+				},
 			},
 			sections = {
 				lualine_a = {},
@@ -50,14 +67,7 @@ return {
 				lualine_c = {},
 				lualine_x = {},
 			},
-			winbar = {
-				lualine_a = {},
-			},
 		}
-
-		local function ins_winbar_left(component)
-			table.insert(configs.winbar.lualine_a, component)
-		end
 
 		local function ins_left(component)
 			table.insert(configs.sections.lualine_c, component)
@@ -66,15 +76,6 @@ return {
 		local function ins_right(component)
 			table.insert(configs.sections.lualine_x, component)
 		end
-
-		ins_winbar_left({
-			function()
-				return require("nvim-navic").get_location()
-			end,
-			cond = function()
-				return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-			end,
-		})
 
 		ins_left({
 			"mode",
@@ -124,10 +125,19 @@ return {
 			cond = conditions.hide_in_width,
 		})
 
+		ins_left({
+			function()
+				return require("nvim-navic").get_location()
+			end,
+			cond = function()
+				return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+			end,
+		})
+
 		ins_right({
 			"diagnostics",
 			sources = { "nvim_diagnostic" },
-			symbols = { error = " ", warn = " ", info = " " },
+			symbols = { error = " ", warn = " ", info = " " },
 			diagnostics_color = {
 				color_error = { fg = colors.red },
 				color_warn = { fg = colors.yellow },

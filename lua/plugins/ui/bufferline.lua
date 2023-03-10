@@ -20,28 +20,28 @@ return {
 
 		return bufferline.setup({
 			highlights = {
-				buffer_visible = {
-					fg = "#009999",
-				},
-				fill = {
-					bg = "#1a1b26",
-				},
-				modified_selected = {
-					bg = "#44475a",
-				},
-				close_button_selected = {
-					fg = "#ff3333",
-					bg = "#44475a",
-				},
+				-- buffer_visible = {
+				-- 	fg = "#009999",
+				-- },
+				-- -- fill = {
+				-- -- 	bg = "#222436",
+				-- -- },
+				-- modified_selected = {
+				-- 	bg = "#44475a",
+				-- },
+				-- close_button_selected = {
+				-- 	fg = "#ff3333",
+				-- 	bg = "#44475a",
+				-- },
 				buffer_selected = {
 					fg = "#4dffdb",
 					bold = false,
 					italic = false,
 				},
-				separator = {
-					bg = "#44475a",
-					fg = "#ffff4d",
-				},
+				-- separator = {
+				-- 	bg = "#44475a",
+				-- 	fg = "#ffff4d",
+				-- },
 			},
 
 			options = {

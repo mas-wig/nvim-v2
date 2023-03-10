@@ -3,22 +3,22 @@ return {
 	event = "VimEnter",
 	config = function()
 		require("tokyonight").setup({
-			style = "night",
-			transparent = true,
+			style = "moon",
+			transparent = false,
 			terminal_colors = true,
 			styles = {
 				comments = { italic = true },
 				keywords = { italic = true },
 				functions = { italic = true, bold = true },
 				variables = { italic = false },
-				sidebars = "dark",
-				floats = "",
+				sidebars = "transparent",
+				floats = "transparent",
 			},
 
 			sidebars = { "qf", "help", "terminal", "toggleterm", "lazy", "NvimTree", "trouble" },
 			day_brightness = 0.3,
 			hide_inactive_statusline = false,
-			dim_inactive = false,
+			dim_inactive = true,
 			lualine_bold = true,
 			on_highlights = function(highlights, _)
 				local hl_set = require("helper.highlights")

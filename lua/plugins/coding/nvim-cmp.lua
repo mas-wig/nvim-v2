@@ -86,11 +86,11 @@ return {
 			window = {
 				completion = {
 					scrollbar = false,
-					border = "none",
+					border = "rounded",
 					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
 					side_padding = 1,
 				},
-				documentation = { border = "none" },
+				documentation = { border = "rounded" },
 			},
 			snippet = {
 				expand = function(args)
@@ -109,7 +109,7 @@ return {
 						end
 					else
 						local source = entry.source.name
-						if source == "luasnip" or source == "nvim_lsp" then
+						if source == "luasnip" or source == "nvim_lsp" or source == "cmp_tabnine" then
 							vim_item.dup = 0
 							vim_item.kind = cmp_kinds[vim_item.kind] .. vim_item.kind
 						end

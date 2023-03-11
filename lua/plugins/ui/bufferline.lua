@@ -45,7 +45,7 @@ return {
 			},
 
 			options = {
-				mode = "buffers",
+				mode = "tabs", -- "buffers",
 				numbers = "none",
 				close_command = "bdelete! %d",
 				right_mouse_command = "bdelete! %d",
@@ -78,7 +78,7 @@ return {
 				persist_buffer_sort = true,
 				separator_style = "thick",
 				enforce_regular_tabs = false,
-				always_show_bufferline = true,
+				always_show_bufferline = false,
 				hover = {
 					enabled = true,
 					delay = 200,

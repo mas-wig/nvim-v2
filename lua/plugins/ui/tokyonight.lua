@@ -3,7 +3,7 @@ return {
 	event = "VimEnter",
 	config = function()
 		require("tokyonight").setup({
-			style = "moon",
+			style = "night",
 			transparent = false,
 			terminal_colors = true,
 			styles = {

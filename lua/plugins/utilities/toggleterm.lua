@@ -36,13 +36,13 @@ return {
 			autochdir = true,
 			highlights = {
 				Normal = {
-					guibg = "#222436",
+					guibg = "#1a1b26",
 				},
 				NormalFloat = {
 					link = "Normal",
 				},
 				FloatBorder = {
-					guibg = "#222436",
+					guibg = "#1a1b26",
 				},
 			},
 			shade_terminals = true,

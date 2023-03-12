@@ -106,6 +106,8 @@ return {
 			icons_enabled = true,
 		})
 
+		ins_left({ "filename", color = { fg = "#e066ff" } })
+
 		ins_left({
 			"branch",
 			icon = "",

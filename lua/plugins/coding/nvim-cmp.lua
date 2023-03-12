@@ -23,6 +23,11 @@ return {
 					snippet_placeholder = "..",
 					ignored_file_types = {
 						txt = true,
+						mysql = true,
+						sql = true,
+						html = true,
+						css = true,
+						markdown = true,
 					},
 					show_prediction_strength = false,
 				})
@@ -54,7 +59,7 @@ return {
 	},
 	config = function()
 		local _, cmp = pcall(require, "cmp")
-		local compare = require("cmp.config.compare")
+		local compare = cmp.config.compare
 
 		return cmp.setup({
 			sorting = {

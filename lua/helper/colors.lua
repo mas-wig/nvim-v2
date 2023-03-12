@@ -1,5 +1,5 @@
 return {
-	lualine_bg = "#222436",
+	lualine_bg = "#1a1b26",
 	lualine_fg = "#bbc2cf",
 	yellow = "#ECBE7B",
 	cyan = "#008080",

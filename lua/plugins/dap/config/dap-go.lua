@@ -11,7 +11,6 @@ return {
 					args = { "dap", "-l", "127.0.0.1:" .. port },
 					detached = true,
 				}
-
 				handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
 					stdout:close()
 					handle:close()

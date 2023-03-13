@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("tokyonight").setup({
 			style = "night",
-			transparent = false,
+			transparent = true,
 			terminal_colors = true,
 			styles = {
 				comments = { italic = true },
@@ -26,9 +26,6 @@ return {
 					highlights[hl[1]] = hl[2]
 				end
 			end,
-			-- on_colors = function(c)
-			-- 	c.bg = "#101010"
-			-- end,
 		})
 
 		vim.cmd("colorscheme tokyonight")

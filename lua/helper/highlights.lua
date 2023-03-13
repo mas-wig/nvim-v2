@@ -10,6 +10,8 @@ local c = theme.colors
 return {
 	{ "LineNr", { fg = "#ffffff" } },
 
+	{ "CursorLine", { bg = "none" } },
+
 	{ "TelescopeBorder", { fg = "#c4ff4d", bg = "#1a1b26" } },
 	{ "TelescopeNormal", { bg = "#1a1b26" } },
 	{ "TelescopePromptTitle", { bg = "#ff4d4d", fg = "#000000" } },
@@ -66,12 +68,14 @@ return {
 	{ "GitSignsChange", { fg = "#ffff00", bg = "#1a1b26" } },
 	{ "GitSignsDelte", { fg = "#ff0000", bg = "#1a1b26" } },
 
-	{ "TreesitterContext", { bg = "#1a1b26" } },
+	{ "TreesitterContext", { bg = c.none } },
 
 	{ "DiagnosticVirtualTextError", { bg = "#1a1b26", fg = c.error } },
 	{ "DiagnosticVirtualTextWarn", { bg = "#1a1b26", fg = c.warning } },
 	{ "DiagnosticVirtualTextInfo", { bg = "#1a1b26", fg = c.info } },
 	{ "DiagnosticVirtualTextHint", { bg = "#1a1b26", fg = c.hint } },
+
+	{ "LeapBackdrop", { fg = "#75a3a3" } },
 
 	{ "PmenuSel", { bg = "#8f00b3" } },
 }

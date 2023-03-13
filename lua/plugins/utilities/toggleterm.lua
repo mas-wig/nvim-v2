@@ -39,7 +39,7 @@ return {
 					guibg = "#1a1b26",
 				},
 				NormalFloat = {
-					link = "Normal",
+					guibg = "#1a1b26",
 				},
 				FloatBorder = {
 					guibg = "#1a1b26",

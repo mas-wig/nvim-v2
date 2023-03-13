@@ -30,6 +30,7 @@ return {
 				},
 				refresh = {
 					statusline = 500,
+					winbar = 500,
 				},
 				disabled_filetypes = {
 					"lazy",
@@ -65,10 +66,16 @@ return {
 				lualine_c = {},
 				lualine_x = {},
 			},
+			winbar = {
+				lualine_a = {},
+			},
 		}
 
 		local function ins_left(component)
 			table.insert(configs.sections.lualine_c, component)
+		end
+		local function ins_winbar(component)
+			table.insert(configs.winbar.lualine_a, component)
 		end
 
 		local function ins_right(component)
@@ -125,7 +132,7 @@ return {
 			cond = conditions.hide_in_width,
 		})
 
-		ins_left({
+		ins_winbar({
 			function()
 				return require("nvim-navic").get_location()
 			end,
